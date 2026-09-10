@@ -1,0 +1,90 @@
+---
+title: "APM 1110 - FA 4"
+author: "Cainglet"
+output: pdf_document
+---
+
+<https://github.com/Endermite50/APM1110-CAINGLET-FA-SA>
+
+## Item 2: Binary Communication Channel
+
+A binary communication channel carries data as one of two sets of signals denoted by 0 and 1. Owing to noise, a transmitted 0 is sometimes received as a 1, and a transmitted 1 is sometimes received as a 0. For a given channel, it can be assumed that a transmitted 0 is correctly received with probability 0.95, and a transmitted 1 is correctly received with probability 0.75. Also, 70% of all messages are transmitted as a 0. If a signal is sent, determine the probability that: (a) a 1 was received; (b) a 1 was transmitted given than a 1 was received.
+
+## Given Probabilities
+
+```{r item2-setup}
+P_transmit0 <- 0.70 
+P_transmit1 <- 0.30
+
+P_rec0_sent_0 <- 0.95                 # P(receive 0 | sent 0)
+P_rec1_sent_0 <- 1 - P_rec0_sent_0    # P(receive 1 | sent 0)
+
+P_rec1_sent_1 <- 0.75                 # P(receive 1 | sent 1)
+P_rec0_sent_1 <- 1 - P_rec1_sent_1    # P(receive 0 | sent 1)
+```
+
+### (a) Probability that a 1 was received
+
+Using the law of total probability:
+
+```{r}
+P_receive1 <- (P_transmit0 * P_rec1_sent_0) + 
+              (P_transmit1 * P_rec1_sent_1)
+cat("P(1 received) =", P_receive1, "\n")
+```
+
+### (b) Probability that a 1 was transmitted given a 1 was received
+
+Using Bayes' theorem:
+
+```{r}
+P_transmit1_given_rec1 <- (P_transmit1 * P_rec1_sent_1) / P_receive1
+cat("P(1 transmitted | 1 received) =", round(P_transmit1_given_rec1, 4), "\n")
+```
+
+## Item 7: IT Company Error Rates
+
+There are three employees working at an IT company: Jane, Amy, and Ava, doing 10%, 30%, and 60% of the programming, respectively. 8% of Jane's work, 5% of Amy's work, and just 1% of Ava's work is in error. What is the overall percentage of error? If a program is found with an error, who is the most likely person to have written it?
+
+## Given Probabilities
+
+```{r}
+P_jane <- 0.10
+P_amy  <- 0.30
+P_ava  <- 0.60
+
+P_err_jane <- 0.08    # P(error | Jane)
+P_err_amy  <- 0.05    # P(error | Amy)
+P_err_ava  <- 0.01    # P(error | Ava)
+```
+
+### Overall probability of error
+
+Using the law of total probability:
+
+```{r}
+P_error <- (P_jane * P_err_jane) + (P_amy * P_err_amy) + (P_ava * P_err_ava)
+cat("P(Error) =", P_error, "\n")
+```
+
+### Probability each person wrote an erroneous program
+
+Bayes's Theorem:
+
+```{r}
+P_jane_given_err <- (P_jane * P_err_jane) / P_error
+P_amy_given_err  <- (P_amy  * P_err_amy)  / P_error
+P_ava_given_err  <- (P_ava  * P_err_ava)  / P_error
+
+cat("P(Jane | Error) =", round(P_jane_given_err, 4), "\n")
+cat("P(Amy  | Error) =", round(P_amy_given_err, 4), "\n")
+cat("P(Ava  | Error) =", round(P_ava_given_err, 4), "\n")
+```
+
+### Most likely author of the error
+
+```{r}
+probs <- c(Jane = P_jane_given_err, Amy = P_amy_given_err, Ava = P_ava_given_err)
+most_likely <- names(which.max(probs))
+cat("Most likely author:", most_likely, "\n")
+```
