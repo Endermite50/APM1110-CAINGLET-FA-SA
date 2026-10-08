@@ -1,0 +1,31 @@
+Year Level,Program,Time of Use,Waiting Time,Queue
+4th Year,BS Psychology,3:00–5:00 PM,5,More than 15 people
+2nd Year,BS Applied Mathematics,7:00–9:00 AM,2,1–5 people
+2nd Year,BA Communication,1:00–3:00 PM,10,More than 15 people
+2nd Year,BS Accountancy,7:00–9:00 AM,0,No Queue
+4th Year,BS Psychology,11:00 AM–1:00 PM,8,11–15 people
+4th Year,BS Psychology,11:00 AM–1:00 PM,5,6–10 people
+1st Year,BS Psychology,7:00–9:00 AM,5,More than 15 people
+2nd Year,BA International Studies,1:00–3:00 PM,2,6–10 people
+1st Year,Psychology,11:00 AM–1:00 PM,6,1–5 people
+1st Year,BA International Studies,7:00–9:00 AM,3,1–5 people
+4th Year,BS Psychology,7:00–9:00 AM,10,More than 15 people
+2nd Year,BA International Studies,7:00–9:00 AM,1.5,No Queue
+2nd Year,BS Applied Mathematics,1:00–3:00 PM,2,11–15 people
+1st Year,BS Applied Mathematics,1:00–3:00 PM,2.5,1–5 people
+3rd Year,BS Applied Mathematics,1:00–3:00 PM,3,11–15 people
+2nd Year,BS Nursing,3:00–5:00 PM,6,More than 15 people
+2nd Year,BS Nursing,3:00–5:00 PM,10,More than 15 people
+2nd Year,BS Nursing,3:00–5:00 PM,4,11–15 people
+2nd Year,BS Information Technology,1:00–3:00 PM,5,11–15 people
+2nd Year,BS Information Technology,11:00 AM–1:00 PM,3,6–10 people
+2nd Year,BA International Studies,7:00–9:00 AM,1.5,1–5 people
+2nd Year,BA Communication,3:00–5:00 PM,2,6–10 people
+2nd Year,BS Psychology,1:00–3:00 PM,3,More than 15 people
+3rd Year,BS Psychology,1:00–3:00 PM,2,6–10 people
+1st Year,BS Computer Science,11:00 AM–1:00 PM,5,6–10 people
+1st Year,BS Computer Science,9:00–11:00 AM,5.5,1–5 people
+2nd Year,BA Communication,9:00–11:00 AM,2.5,More than 15 people
+1st Year,BS Applied Mathematics,7:00–9:00 AM,1,1–5 people
+1st Year,BS Applied Mathematics,11:00 AM–1:00 PM,3,6–10 people
+3rd Year,BS Medical Technology,7:00–9:00 AM,2.5,6–10 people
