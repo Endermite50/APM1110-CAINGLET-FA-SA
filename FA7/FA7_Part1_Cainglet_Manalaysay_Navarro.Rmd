@@ -1,0 +1,110 @@
+---
+title: "FA7 Part 1"
+author: "Angelo M. Navarro"
+date: "2026-10-08"
+output: html_document
+---
+## Importing & Extracting Dataset
+```{r}
+library(readxl)
+Elevator_Waiting_Times <- read_excel("C:/Users/Angelo/OneDrive - Far Eastern University/Prob/Elevator Waiting Times.xlsx")
+View(Elevator_Waiting_Times)
+
+wait <- Elevator_Waiting_Times$`Waiting Time`
+```
+
+# Key Parameters
+
+## Mean
+E(X) = 1 / λ
+```{r}
+mean(wait)
+```
+mean(wait) = 1 / λ
+λ = 1 / mean(wait)
+
+```{r}
+lambda_wait <- 1 / mean(wait)
+```
+
+*On average, an FC Building elevator arrives once every 4.0667 minutes.*
+
+## Additional Statistical Measures
+```{r}
+min(wait)
+max(wait)
+```
+
+
+## Probability Density Function
+
+```{r}
+PDF <- function(x, lambda) {
+  result <- (lambda * exp(-(lambda) * x))
+  return(result)
+  }
+```
+
+Let's test:
+
+```{r}
+PDF(wait, lambda_wait)
+dexp(wait, lambda_wait)
+```
+
+## Cumulative Density Function
+
+```{r}
+CDF <- function(x, lambda) {
+  result <- (1 - exp(-(lambda) * x))
+  return(result)
+  }
+```
+
+```{r}
+CDF(wait, lambda_wait)
+pexp(wait, lambda_wait)
+```
+
+## Probabilities
+```{r}
+fd_wait <- sort(unique(wait), decreasing = TRUE)
+fd_tab <- table(dexp(wait, lambda_wait))
+data.frame(fd_wait, fd_tab)
+```
+
+## Visualizing the Data
+```{r}
+curve(dexp(x, lambda_wait), from = min(wait), to = max(wait), xlab = " t " , ylab = "f(t)", main = "Elevator Waiting Time")
+```
+```{r}
+ind <- c(1:10)
+data.frame(ind, dexp(ind, lambda_wait))
+```
+
+```{r}
+hist(dexp(wait, lambda_wait), xlab = "Probability", ylab = "Minutes", ylim = c(1, 10), main = "Probabilities of Wait Times")
+```
+
+# Interpretations
+The exponential distribution allows us to determine the *likelihood that the elevator arrives within a specific number of minutes*. Using the CDF, we can calculate the probability that a student waits less than or equal to a given number of seconds. The expected waiting time, calculated as 1/λ represents the average amount of time a student can expect to wait for the elevator. These results can help students anticipate waiting times and provide insight into the efficiency of the elevator service.
+
+## Implications
+How likely is a wait time of exactly 1 minute?
+```{r}
+dexp(1, lambda_wait)
+```
+
+**19.23% likelihood.**
+
+How likely is a wait time of 3 minutes or less?
+```{r}
+pexp(3, lambda_wait)
+```
+**52.18% likelihood.**
+
+How likely is a wait time of exactly 10 minutes?
+```{r}
+dexp(10, lambda_wait)
+```
+**2.10% Likelihood.**
