@@ -17,7 +17,7 @@ This repository/document contains the empirical analysis of distribution fitting
 
 
 * **Ethereum (ETH) 5-Minute Returns:**
-* Normality is decisively rejected across all 200 random samples ($p < 0.05$, mean $W = 0.779$) using the Shapiro-Wilk test.
+* Normality is decisively rejected across all 200 of 5000 random samples ($p < 0.05$, mean $W = 0.779$) using the Shapiro-Wilk test.
 
 
 * Supported by the Jarque-Bera test ($3.45 \times 10^8, p < 0.001$).
